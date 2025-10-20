@@ -1,0 +1,61 @@
+# Configuration file for satellite image analysis
+
+# Data paths
+data:
+  # Directory containing TIF files
+  data_dir: "/path/to/extracted_data"
+  # CSV file with index (filename, longitude, latitude)
+  index_file: "/path/to/index.csv"
+  # Directory for output images
+  output_dir: "./outputs/images"
+  # Directory for reports
+  reports_dir: "./outputs/reports"
+
+# Image properties
+image:
+  # Expected image dimensions
+  width: 256
+  height: 256
+  # Number of bands (Sentinel-2)
+  bands: 12
+  # Data type
+  dtype: "uint16"
+
+# Visualization settings
+visualization:
+  # Percentile clipping for normalization
+  percentile_clip: 2
+  # Style for matplotlib
+  style: "default"
+  # Color palette for seaborn
+  palette: "husl"
+
+# Model settings
+models:
+  # CLIP model configuration
+  clip:
+    model_name: "ViT-B/32"
+    device: "cuda"  # or "cpu"
+    gpu_id: "0"
+
+  # DINOv2 model configuration
+  dinov2:
+    model_name: "dinov2_vitl14"  # Options: dinov2_vits14, dinov2_vitb14, dinov2_vitl14, dinov2_vitg14
+    device: "cuda"  # or "cpu"
+    gpu_id: "1"
+
+# Similarity analysis settings
+similarity:
+  # Number of random patches per image
+  K: 10
+  # Size of each square patch
+  patch_size: 64
+  # File extension for images
+  file_extension: ".png"
+
+# Processing settings
+processing:
+  # Batch size for processing
+  batch_size: 32
+  # Number of workers for data loading
+  num_workers: 4

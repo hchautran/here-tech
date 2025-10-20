@@ -1,7 +1,30 @@
+[tool.hatch.metadata]
+allow-direct-references = true
 [project]
-name = "here-tech"
+name = "here_tech"
 version = "0.1.0"
-description = "Add your description here"
+description = "Satellite image analysis project using deep learning models (CLIP and DINOv2) for feature extraction and similarity comparison"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "rasterio>=1.3.0",
+    "Pillow>=9.0.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "tqdm>=4.65.0",
+    "clip @ git+https://github.com/openai/CLIP.git",
+    "ftfy>=6.1.0",
+    "regex>=2023.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter>=1.0.0",
+    "ipykernel>=6.0.0",
+]
+
